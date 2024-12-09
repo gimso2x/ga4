@@ -8,6 +8,7 @@ export default function Tt1() {
     sendGAEvent("event", "tt1", {
       page_title: "search",
       event_category: "search",
+      debug_mode: true,
     });
   }, []);
 
@@ -17,6 +18,7 @@ export default function Tt1() {
         onClick={() =>
           sendGAEvent("event", "search_keyword_recent_con", {
             event_category: "search",
+            debug_mode: true,
           })
         }
       >
@@ -29,7 +31,16 @@ sendGAEvent("event", "search_keyword_recent_con", {
     `}`}
         </pre>
       </button>
-      <button>Test1</button>
+      <button
+        onClick={() =>
+          sendGAEvent("event", {
+            event_category: "search",
+            debug_mode: true,
+          })
+        }
+      >
+        Test1123123
+      </button>
       <button>Test1</button>
       <button>Test1</button>
       <button>Test1</button>
