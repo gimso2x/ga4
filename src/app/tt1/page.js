@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 export default function Tt1() {
   useEffect(() => {
-    sendGAEvent("event", {
+    sendGAEvent("event", "tt1", {
       page_title: "search",
       event_category: "search",
     });
