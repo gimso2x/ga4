@@ -1,3 +1,5 @@
+"use client";
+
 import { sendGAEvent } from "@next/third-parties/google";
 import { useEffect } from "react";
 
@@ -20,13 +22,11 @@ export default function Tt1() {
       >
         Test1
         <pre>
-          {
-            ("event",
-            "search_keyword_recent_con",
-            {
-              event_category: "search",
-            })
-          }
+          {`${`
+sendGAEvent("event", "search_keyword_recent_con", {
+  event_category: "search",
+});
+    `}`}
         </pre>
       </button>
       <button>Test1</button>
