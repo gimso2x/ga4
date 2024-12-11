@@ -42,7 +42,11 @@ export default function RootLayout({ children }) {
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-F2LLSZHTYZ');
+              gtag('config', 'G-F2LLSZHTYZ', {
+                'send_page_view': false,
+                'debug_mode':true
+               
+              });
             `,
           }}
         />

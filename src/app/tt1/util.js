@@ -2,7 +2,7 @@
 export const pageview = (url) => {
   if (typeof window.gtag === "undefined") return;
 
-  window.gtag("config", GA_TRACKING_ID, {
+  window.gtag("config", "G-F2LLSZHTYZ", {
     page_path: url,
   });
 };
