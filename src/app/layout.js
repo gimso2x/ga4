@@ -1,7 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import { GoogleAnalytics, sendGAEvent } from "@next/third-parties/google";
-import { useEffect } from "react";
+
 import Script from "next/script";
 
 const geistSans = localFont({
