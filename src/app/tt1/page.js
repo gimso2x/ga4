@@ -6,7 +6,10 @@ import { event, pageview } from "./util";
 export default function Tt1() {
   useEffect(() => {
     // pageview("tt1");
-    event({
+    // event({
+    //   page_title: "Your Custom Page Title",
+    // });
+    gtag("event", "page_view", {
       page_title: "Your Custom Page Title",
     });
   }, []);
