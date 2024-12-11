@@ -1,8 +1,7 @@
 "use client";
 
-import { sendGAEvent } from "@next/third-parties/google";
 import { useEffect } from "react";
-import { event, pageview } from "../layout";
+import { event, pageview } from "./util";
 
 export default function Tt1() {
   useEffect(() => {
