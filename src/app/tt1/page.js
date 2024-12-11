@@ -6,6 +6,12 @@ import { event, pageview } from "./util";
 export default function Tt1() {
   useEffect(() => {
     pageview("tt1");
+    event({
+      action: "page_view",
+      category: "Engagement",
+      label: "Sample Button",
+      page_title: "페이지 타이틀 테스트",
+    });
   }, []);
 
   return (
