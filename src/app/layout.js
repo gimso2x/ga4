@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { GoogleAnalytics, sendGAEvent } from "@next/third-parties/google";
 import { useEffect } from "react";
+import Script from "next/script";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -20,18 +21,56 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  useEffect(() => {
-    sendGAEvent("config", "G-F2LLSZHTYZ", {
-      send_page_view: false,
-    });
-  }, []);
+  // useEffect(() => {
+  //   sendGAEvent("config", "G-F2LLSZHTYZ", {
+  //     send_page_view: false,
+  //   });
+  // }, []);
 
   return (
     <html lang="en">
+      <head>
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id="G-F2LLSZHTYZ"`}
+        />
+        <Script
+          id="gtag-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-F2LLSZHTYZ');
+            `,
+          }}
+        />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <GoogleAnalytics gaId="G-F2LLSZHTYZ" />
+        {/* <GoogleAnalytics gaId="G-F2LLSZHTYZ" /> */}
         {children}
       </body>
     </html>
   );
 }
+
+// 페이지뷰 이벤트 전송 함수
+export const pageview = (url) => {
+  if (typeof window.gtag === "undefined") return;
+
+  window.gtag("config", GA_TRACKING_ID, {
+    page_path: url,
+  });
+};
+
+// 커스텀 이벤트 전송 함수
+export const event = ({ action, category, label, value }) => {
+  if (typeof window.gtag === "undefined") return;
+
+  window.gtag("event", action, {
+    event_category: category,
+    event_label: label,
+    value: value,
+  });
+};
